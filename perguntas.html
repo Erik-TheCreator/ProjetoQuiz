@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>GameGuess</title>
+</head>
+<body>
+     <header id="titulo">
+    <h1>GameGuess</h1>
+    </header>
+     <section id="principal">
+
+        <div id="container2">
+            <h1>Pontuação:<span id="pontos">0</span></h1>
+
+            <img src="img/5c36ab97e7f320cccfcc9b6d9b845e91.jpg" alt="" id="imagemjogo">
+            <form id="formulario">
+
+                <ul>
+                <li class="pergunta">
+                <input type="radio" class="opcao" name="opcoes" value="1">
+                <label for="opcao" id="label1">Mario</label>
+                </li>
+
+                <li class="pergunta">
+                <input type="radio"  class="opcao" name="opcoes" value="2">
+                <label for="opcao" id="label2">Sonic</label>
+                </li>
+
+                <li class="pergunta">
+                <input type="radio" class="opcao" name="opcoes" value="3">
+                <label for="opcao" id="label3">Link</label>
+                </li>
+
+                <li class="pergunta">
+                <input type="radio" class="opcao" name="opcoes" value="4">
+                <label for="opcao" id="label4">Luigi</label>
+                </li>
+
+                </ul>
+                <button type="button" id="btnAdivinhar">Adivinhar</button>
+            </form>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
