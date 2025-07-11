@@ -7,7 +7,7 @@ let perguntas=[
     "opcao2":"Sonic",
     "opcao3":"Link",
     "opcao4":"Luigi",
-    "imagem":"img/5c36ab97e7f320cccfcc9b6d9b845e91.jpg"
+    "imagem":"img/mario.jpg"
     },
 
   {
@@ -148,16 +148,64 @@ let perguntas=[
                 "opcao3":"Gherman",
                 "opcao4":"Lady Maria",
                 "imagem":"img/maria.jpg"
+                },
+
+            {
+                "id":16,
+                "resposta":3,
+                "opcao1":"Jack",
+                "opcao2":"Andrew Ryan",
+                "opcao3":"Booker Dewitt",
+                "opcao4":"Frank Fontaine",
+                "imagem":"img/booker.jpg"
                 }
 
-        
+        ,
 
-        
+            {
+                "id":17,
+                "resposta":2,
+                "opcao1":"Nier",
+                "opcao2":"Emil",
+                "opcao3":"Adam",
+                "opcao4":"Shadow Lord",
+                "imagem":"img/emil.jpg"
+                }
     
 
+        ,
 
+            {
+                "id":18,
+                "resposta":2,
+                "opcao1":"John Marson",
+                "opcao2":"Arthur Morgan",
+                "opcao3":"Micah Bell",
+                "opcao4":"Lenny Summers",
+                "imagem":"img/arthur.jpg"
+                }
+,
 
+            {
+                "id":19,
+                "resposta":3,
+                "opcao1":"Scratch",
+                "opcao2":"Alan Woke",
+                "opcao3":"Alan Wake",
+                "opcao4":"John Wick",
+                "imagem":"img/alan.webp"
+                }
+                ,
 
+            {
+                "id":20,
+                "resposta":1,
+                "opcao1":"Vivi",
+                "opcao2":"Stein",
+                "opcao3":"Zidane",
+                "opcao4":"Garland",
+                "imagem":"img/vivi.jpg"
+                }
 ]
 
 
@@ -165,6 +213,7 @@ let perguntas=[
 let rodada=1
 let acertos=0
 const btnAdivinhar=document.querySelector("#btnAdivinhar")
+const btnProximo=document.querySelector("#btnProximo")
 let opcao=document.querySelector(".opcao")
 let imagemjogo=document.querySelector("#imagemjogo")
 let labeljogo=document.querySelector("#label1")
@@ -172,46 +221,100 @@ let labeljogo2=document.querySelector("#label2")
 let labeljogo3=document.querySelector("#label3")
 let labeljogo4=document.querySelector("#label4")
 let pontos=document.querySelector("#pontos")
+let addponto=document.querySelector(".addponto")
+let npersonagem=document.querySelector("#npersonagem")
+let conteudo=document.querySelector("#container2")
+let errortext=document.querySelector("#errortext")
 
 
 
 btnAdivinhar.addEventListener("click", (e) => {
     e.preventDefault()
-    
     const selecionado = document.querySelector('input[name="opcoes"]:checked')
-
     if (!selecionado) {
-        alert("Selecione uma opção!")
+        errortext.classList.add("aparecererrortext")
+         setTimeout(()=>{
+            errortext.classList.remove("aparecererrortext")
+        },1000) 
         return
     }
     let perguntaAtual = perguntas[rodada - 1]
     if (perguntaAtual.resposta == selecionado.value) {
+        conteudo.classList.add("animacaoacerto")
+        addponto.classList.add("mudarponto")
+        pontos.classList.add("animacaoacertotexto")
+          setTimeout(()=>{
+        conteudo.classList.remove("animacaoacerto")
+     },500) 
         acertos++
     }
-
-    
-//      setTimeout(()=>{
-// alert("seila")
-//      },1000) 
-  
-        rodada ++
- 
-
-    if (rodada > perguntas.length) {
-        window.location.href = "index.html";
-        alert(`Fim do jogo! Acertos: ${acertos}`)
-        
-    
-        
-        return;
+    else{
+        pontos.classList.add("animacaoerrotexto")
+        conteudo.classList.add("animacaoerro")
+         setTimeout(()=>{
+        conteudo.classList.remove("animacaoerro")
+     },500) 
     }
 
+     setTimeout(()=>{
+        addponto.classList.remove("mudarponto")
+     },700)
+
+    for (let i = 1; i <= 4; i++) {
+        let label = document.querySelector(`#label${i}`)
+        if (i == perguntaAtual.resposta) {
+        label.classList.add("correta")
+    } else {
+        label.classList.add("errada")
+    }}
+    document.querySelectorAll('input[name="opcoes"]').forEach(input => {
+    input.disabled = true;
+})
+    pontos.innerText=acertos
+    btnAdivinhar.classList.add("mudarbotao")
+    btnProximo.classList.add("ativarbotao")
+})
+
+
+
+btnProximo.addEventListener("click", (e) => {
+    document.querySelectorAll('input[name="opcoes"]').forEach(input => {
+    input.checked = false
+    input.disabled = false
+})
+    for (let i = 1; i <= 4; i++) {
+    let label = document.querySelector(`#label${i}`)
+    label.classList.remove("correta", "errada")
+}
+    pontos.classList.remove("animacaoacertotexto")
+    pontos.classList.remove("animacaoerrotexto")
+    rodada ++
+    if (rodada > perguntas.length) {
+        window.location.href = "index.html"
+        if (acertos<=0){
+            alert(`Fim do jogo! Acertos: ${acertos}\nErrou tudo slk BRUTAL`)
+        }else if (acertos<=5){
+            alert(`Fim do jogo! Acertos: ${acertos}\nSkill Issue SEVERO`)
+        }else if (acertos<=10){
+            alert(`Fim do jogo! Acertos: ${acertos}\nConhece bem pouco`)
+        }else if (acertos<=15){
+            alert(`Fim do jogo! Acertos: ${acertos}\nAté que sabe das coisa`)
+        }else if(acertos<=19){
+             alert(`Fim do jogo! Acertos: ${acertos}\nParabéns, você conhece bastante`)
+
+        }else{
+        alert(`Fim do jogo! Acertos: ${acertos}\nObteve Gnose e transcendeu o plano material`)
+        }
+    }
+    npersonagem.innerText=`#${rodada}`
     perguntaAtual = perguntas[rodada - 1]
     imagemjogo.setAttribute("src", perguntaAtual.imagem)
     labeljogo.innerText = perguntaAtual.opcao1
     labeljogo2.innerText = perguntaAtual.opcao2
     labeljogo3.innerText = perguntaAtual.opcao3
     labeljogo4.innerText = perguntaAtual.opcao4
-    document.querySelectorAll('input[name="opcoes"]').forEach(r => r.checked = false);
-    pontos.innerText=acertos
+    document.querySelectorAll('input[name="opcoes"]').forEach(r => r.checked = false)
+    btnProximo.classList.remove("ativarbotao")
+    btnAdivinhar.classList.remove("mudarbotao")
+
 })

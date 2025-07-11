@@ -14,6 +14,17 @@ body{
     background-size: cover;
 }
 
+#errortext{
+    position: absolute;
+    color: #e7291b;
+    visibility: hidden; 
+    top: 110px;
+}
+
+.aparecererrortext{
+    visibility: visible !important;
+}
+
 #titulo{
     display: flex;
     justify-content: center;
@@ -24,13 +35,20 @@ body{
 }
 
 #titulo h1{
+    margin-top: 30px;
+
+}
+#titulo h1 a{
+text-decoration: none;
 margin-top: 20px;
 font-size: 40px;
-  font-weight: 600;
-  color: #fdfdfe;
-  text-shadow: 0px 0px 5px #6e77ca, 0px 0px 10px #6e77ca, 0px 0px 10px #6e77ca,
-    0px 0px 20px #6e77ca;
+font-weight: 600;
+color: #fdfdfe;
+text-shadow: 0px 0px 5px #6e77ca, 0px 0px 10px #6e77ca, 0px 0px 10px #6e77ca,
+0px 0px 20px #6e77ca;
+
 }
+
 
 #principal{
     display: flex;
@@ -57,6 +75,9 @@ font-size: 40px;
 
 }
 
+#npersonagem{
+    color: rgb(255, 119, 0);
+}
 
 #container2{
     width: 400px;
@@ -66,9 +87,35 @@ font-size: 40px;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
 }
-#container2 h1{
-    margin-top: 50px;
+
+.container2erro{
+    width: 400px;
+    height: 700px;
+    background-color: rgba(20, 19, 19, 0.918);
+    border-radius: 20px;
+    box-shadow: rgb(255, 0, 0) 0px 2px 1px, rgb(255, 7, 7) 0px 4px 2px, rgb(248, 3, 3) 0px 8px 4px, rgb(255, 1, 1) 0px 16px 8px, rgba(255, 0, 0, 0.09) 0px 32px 16px;
+
 }
+#container2 h1{
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+
+#pontos{
+    color: white;
+}
+
+.addponto{
+    visibility: hidden;
+    color: white;
+}
+
+.mudarponto{
+    color: #2f910b;
+    visibility: visible;
+}
+
 
 #container2 img{
     width: 70%;
@@ -81,8 +128,8 @@ font-size: 40px;
     align-content: center;
 
 
-}
 
+}
 
 .pergunta{
     display: flex;
@@ -94,7 +141,7 @@ font-size: 40px;
 
 
 .pergunta label {
-    min-width: 200px; 
+    min-width: 230px; 
     text-align: left;
 }
 
@@ -110,6 +157,33 @@ font-size: 40px;
       background-color: #6e87ca;
     font-size: 15px;
 }
+.animacaoacerto{
+     box-shadow: rgb(12, 247, 3) 0px 2px 1px, rgb(40, 255, 7) 0px 4px 2px, rgb(3, 248, 19) 0px 8px 4px, rgb(3, 230, 34) 0px 16px 8px, rgba(14, 253, 2, 0.09) 0px 32px 16px !important;
+
+
+}
+.animacaoerro{
+    box-shadow: rgb(255, 0, 0) 0px 2px 1px, rgb(255, 7, 7) 0px 4px 2px, rgb(248, 3, 3) 0px 8px 4px, rgb(255, 1, 1) 0px 16px 8px, rgba(255, 0, 0, 0.09) 0px 32px 16px !important;
+
+
+
+}
+
+.animacaoacertotexto{
+    color: #2f910b !important;
+}
+
+.animacaoerrotexto{
+    color: #b51111 !important;
+}
+
+.correta {
+    color: #2f910b;
+}
+
+.errada {
+    color: #b51111;
+}
 
 #btn:hover{
     cursor: pointer;
@@ -123,6 +197,7 @@ font-size: 40px;
 
 
 #btnAdivinhar{
+    font-size: 14px;
     margin-top: 30px;
     width: 60%;
     height: 45px;
@@ -133,10 +208,39 @@ font-size: 40px;
       background-color: #6e87ca;
 }
 
-
 #btnAdivinhar:hover{
+    font-size: 16px;
     cursor: pointer;
     width: 63%;
     height: 50px;
     background-color: #395dbe;
+}
+
+.mudarbotao{
+    display: none;
+}
+
+.ativarbotao{
+    display: inline !important;
+}
+
+#btnProximo{
+    font-size: 14px;
+    display: none;
+    margin-top: 30px;
+    width: 60%;
+    height: 45px;
+    border-radius: 10px;
+    color: #fdfdfe;
+    text-shadow: 0px 0px 5px #e7811b, 0px 0px 10px #e7811b, 0px 0px 10px #e7811b,
+      0px 0px 20px #e7811b;
+    background-color: #e7811b;
+}
+
+#btnProximo:hover{
+    font-size: 16px;
+    cursor: pointer;
+    width: 63%;
+    height: 50px;
+    background-color: #e87808;
 }
